@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import json
+import os
 
 app = Flask(__name__)
 CORS(app)
 
 # Load the data from the JSON file
-with open('q-vercel-python.json') as f:
+with open(os.path.join(os.path.dirname(__file__), 'q-vercel-python.json')) as f:
     data = json.load(f)
 
 @app.route('/api', methods=['GET'])
